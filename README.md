@@ -32,3 +32,7 @@ initialize()
 print(colorfy('Hello, green!', color='green', bold=True))
 
 ```
+# Instalation
+```
+pip install git+https://github.com/x8ss/colorfy
+```
