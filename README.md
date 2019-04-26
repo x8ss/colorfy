@@ -4,7 +4,7 @@ Easy colored terminal
 ![alt text](https://github.com/x8ss/colorfy/blob/master/img.png)
 
 # Usage
-```
+```python
 from colorfy import *
 
 #initialize()    If you're using Windows
