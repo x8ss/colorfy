@@ -8,6 +8,9 @@ Easy colored terminal
 from colorfy import *
 
 initialize()
+
+print(colorfy('Hello, green!', color='green', bold=True))
+
 '''
 :param text: Your message
 
@@ -28,9 +31,6 @@ initialize()
 :param backgroundbrightcolor: False by default
 
 '''
-
-print(colorfy('Hello, green!', color='green', bold=True))
-
 ```
 # Instalation
 ```
