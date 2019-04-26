@@ -7,7 +7,7 @@ Easy colored terminal
 ```
 from colorfy import *
 
-#initialize()    If you're not seeing colors
+#initialize()    If you're using Windows
 
 print(colorfy('Hello, green!', color='green', bold=True))
 
