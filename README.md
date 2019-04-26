@@ -33,6 +33,7 @@ print(colorfy('Hello, green!', color='green', bold=True))
 '''
 ```
 # Instalation
+Works with Unix and Windows
 ```
 pip install https://github.com/x8ss/colorfy/archive/master.zip
 ```
