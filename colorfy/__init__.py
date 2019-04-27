@@ -9,6 +9,33 @@ def initialize():
 
 def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
 
+    '''
+
+    :param text: Your message
+
+    :param color: None by default
+        options: black, red, green, yellow, blue, magenta, cyan, white
+
+    :param backgroundcolor: None by default
+        options: black, red, green, yellow, blue, magenta, cyan, white
+
+    :param rgb: (r, g, b)
+        Does not support bold
+
+    :param backgroundrgb: (r, g, b)
+        Does not support bold
+
+    :param bold: False by default
+        options: True, False
+
+    :param underline: False by default
+        options: True, False
+
+    :param negative: False by default
+        options: True, False
+
+    '''
+
     ansi ="\u001b["
 
     choice = 0
