@@ -14,7 +14,6 @@ print(colorfy('Hello, green!', color='green', bold=True))
 ```
 
 # Instalation
-Works with Windows and Linux
 ```
 pip install https://github.com/x8ss/colorfy/archive/master.zip
 ```
