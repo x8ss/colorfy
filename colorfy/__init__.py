@@ -1,89 +1,56 @@
-from os import system
+from os import system, name
+
 
 
 def initialize():
-    system('color 0')
-
-def colorfy(text, color:str='None', backgroundcolor:str='None', bold:bool=False, underline:bool=False,
-            warning:bool=False, brightcolor:bool=False, backgroundbrightcolor:bool=False):
+    if name == 'nt':
+        system('color 0')
 
 
+def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
 
-    '''
-    :param text: Your message
+    ansi ="\u001b["
 
-    :param color: None by default
-     options: None, red, green, blue, cyan, magenta, yellow, black, white
+    choice = 0
 
-    :param backgroundcolor: None by default
-     options: None, red, green, blue, cyan, magenta, yellow, black, white
-
-    :param bold: False by default
-
-    :param underline: False by default
-
-    :param warning: False by default
-
-    :param brightcolor: False by default
-
-    :param backgroundbrightcolor: False by default
-
-    '''
-
-
-    if brightcolor == False:
-        end = 'm'
-    else:
-        end = ';1m'
-
-    colors = {
+    fore = {
         'None': '',
-        'red': '\033[31' + end,
-        'green': '\033[32' + end,
-        'blue': '\033[34' + end,
-        'cyan': '\033[36' + end,
-        'magenta': '\033[35' + end,
-        'yellow': '\033[33' + end,
-        'black': '\033[30' + end,
-        'white': '\033[37' + end,
+        'black': ansi + f'30m',
+        'red': ansi + f'31m',
+        'green': ansi + f'32m',
+        'yellow': ansi + f'33m',
+        'blue': ansi + f'34m',
+        'magenta': ansi + f'35m',
+        'cyan': ansi + f'36m',
+        'white': ansi + f'37m',
     }
 
-    if backgroundbrightcolor == False:
-        bend = 'm'
-    else:
-        bend = ';1m'
-
-    backgrounds = {
+    back = {
         'None': '',
-        'black': '\u001b[40' + bend,
-        'red': '\u001b[41' + bend,
-        'green': '\u001b[42' + bend,
-        'yellow': '\u001b[43' + bend,
-        'blue': '\u001b[44' + bend,
-        'magenta': '\u001b[45' + bend,
-        'cyan': '\u001b[46' + bend,
-        'white': '\u001b[47' + bend,
+        'black': ansi + f'40m',
+        'red': ansi + f'41m',
+        'green': ansi + f'42m',
+        'yellow': ansi + f'43m',
+        'blue': ansi + f'44m',
+        'magenta': ansi + f'45m',
+        'cyan': ansi + f'46m',
+        'white': ansi + f'47m',
     }
 
+    fore = (fore[color])
 
-    if bold == False:
-        bold = ''
-    else:
-        bold = '\033[1m'
+    back = (back[backgroundcolor])
 
-    if underline == False:
-        underline = ''
-    else:
-        underline = '\033[4m'
+    negative = ansi + '7m' if negative == True else ''
 
-    if warning == False:
-        warning = ''
-    else:
-        warning = '\033[93m'
+    underline = ansi + '4m' if underline == True else ''
 
+    bold = ansi + '1m' if bold == True else ''
 
-    last = '\033[0m'
+    backgroundrgb = ansi + f'48;2;{backgroundrgb[0]};{backgroundrgb[1]};{backgroundrgb[2]}m' if backgroundrgb != (-1,-1,-1) else ''
 
+    rgb = ansi + f'38;2;{rgb[0]};{rgb[1]};{rgb[2]}m' if rgb != (-1,-1,-1) else ''
 
-    return  (colors[color] + backgrounds[backgroundcolor] + bold + underline + warning + str(text) + last)
+    last = ansi + '0m'
 
+    return (negative + underline + bold + rgb + backgroundrgb + fore + back + str(text) + last)
