@@ -80,4 +80,4 @@ def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-
 
     last = ansi + '0m'
 
-    return (negative + underline + bold + rgb + backgroundrgb + fore + back + str(text) + last)
+    return str(negative + underline + bold + rgb + backgroundrgb + fore + back + str(text) + last)
