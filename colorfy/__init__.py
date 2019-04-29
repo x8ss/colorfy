@@ -38,7 +38,6 @@ def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-
 
     ansi ="\u001b["
 
-    choice = 0
 
     fore = {
         'None': '',
