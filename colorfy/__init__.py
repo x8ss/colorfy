@@ -7,7 +7,7 @@ def initialize():
         system('color 0')
 
 
-def colorfy(text, color:str=None , backgroundcolor:str=None, rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
+def colorfy(text, color=None , backgroundcolor=None, rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
 
     '''
 
