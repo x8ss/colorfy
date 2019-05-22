@@ -7,7 +7,7 @@ def initialize():
         system('color 0')
 
 
-def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
+def colorfy(text, color:str=None , backgroundcolor:str=None, rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
 
     '''
 
@@ -40,7 +40,6 @@ def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-
 
 
     fore = {
-        'None': '',
         'black': ansi + f'30m',
         'red': ansi + f'31m',
         'green': ansi + f'32m',
@@ -52,7 +51,6 @@ def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-
     }
 
     back = {
-        'None': '',
         'black': ansi + f'40m',
         'red': ansi + f'41m',
         'green': ansi + f'42m',
@@ -63,9 +61,9 @@ def colorfy(text, color:str='None' , backgroundcolor:str='None', rgb:tuple=(-1,-
         'white': ansi + f'47m',
     }
 
-    fore = (fore[color])
+    fore = (fore[color]) if color != None else ''
 
-    back = (back[backgroundcolor])
+    back = (back[backgroundcolor]) if backgroundcolor != None else ''
 
     negative = ansi + '7m' if negative == True else ''
 
