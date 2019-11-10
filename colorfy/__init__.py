@@ -1,5 +1,28 @@
 from os import system, name
 
+ansi = "\u001b["
+
+class colors:
+    class fore:
+        black = ansi + '30m'
+        red = ansi + '31m'
+        green = ansi + '32m'
+        yellow = ansi + '33m'
+        blue = ansi + '34m'
+        magenta = ansi + '35m'
+        cyan = ansi + '36m'
+        white = ansi + '37m'
+    class back:
+        black = ansi + '40m'
+        red = ansi + '41m'
+        green = ansi + '42m'
+        yellow = ansi + '43m'
+        blue = ansi + '44m'
+        magenta = ansi + '45m'
+        cyan = ansi + '46m'
+        white = ansi + '47m'
+
+
 
 
 def initialize():
@@ -7,63 +30,13 @@ def initialize():
         system('color 0')
 
 
-def colorfy(text, color=None , backgroundcolor=None, rgb:tuple=(-1,-1,-1), backgroundrgb:tuple=(-1,-1,-1), bold:bool=False, underline:bool=False, negative:bool=False):
-
-    '''
-
-    :param text: Your message
-
-    :param color: None by default
-        options: black, red, green, yellow, blue, magenta, cyan, white
-
-    :param backgroundcolor: None by default
-        options: black, red, green, yellow, blue, magenta, cyan, white
-
-    :param rgb: (r, g, b)
-        Does not support bold
-
-    :param backgroundrgb: (r, g, b)
-        Does not support bold
-
-    :param bold: False by default
-        options: True, False
-
-    :param underline: False by default
-        options: True, False
-
-    :param negative: False by default
-        options: True, False
-
-    '''
-
-    ansi ="\u001b["
+def colorfy(text, color=None, back=None, forergb:tuple=(-1, -1, -1), backrgb:tuple=(-1, -1, -1), bold:bool=False, underline:bool=False, negative:bool=False):
 
 
-    fore = {
-        'black': ansi + f'30m',
-        'red': ansi + f'31m',
-        'green': ansi + f'32m',
-        'yellow': ansi + f'33m',
-        'blue': ansi + f'34m',
-        'magenta': ansi + f'35m',
-        'cyan': ansi + f'36m',
-        'white': ansi + f'37m',
-    }
 
-    back = {
-        'black': ansi + f'40m',
-        'red': ansi + f'41m',
-        'green': ansi + f'42m',
-        'yellow': ansi + f'43m',
-        'blue': ansi + f'44m',
-        'magenta': ansi + f'45m',
-        'cyan': ansi + f'46m',
-        'white': ansi + f'47m',
-    }
+    fore = color if color != None else ''
 
-    fore = (fore[color]) if color != None else ''
-
-    back = (back[backgroundcolor]) if backgroundcolor != None else ''
+    backg = back if back != None else ''
 
     negative = ansi + '7m' if negative == True else ''
 
@@ -71,10 +44,10 @@ def colorfy(text, color=None , backgroundcolor=None, rgb:tuple=(-1,-1,-1), backg
 
     bold = ansi + '1m' if bold == True else ''
 
-    backgroundrgb = ansi + f'48;2;{backgroundrgb[0]};{backgroundrgb[1]};{backgroundrgb[2]}m' if backgroundrgb != (-1,-1,-1) else ''
+    backrgb = ansi + f'48;2;{backrgb[0]};{backrgb[1]};{backrgb[2]}m' if backrgb != (-1,-1,-1) else ''
 
-    rgb = ansi + f'38;2;{rgb[0]};{rgb[1]};{rgb[2]}m' if rgb != (-1,-1,-1) else ''
+    forergb = ansi + f'38;2;{forergb[0]};{forergbrgb[1]};{forergb[2]}m' if forergb != (-1,-1,-1) else ''
 
     last = ansi + '0m'
 
-    return str(negative + underline + bold + rgb + backgroundrgb + fore + back + str(text) + last)
+    return (negative + underline + bold + forergb + backrgb + fore + backg + (text) + last)
